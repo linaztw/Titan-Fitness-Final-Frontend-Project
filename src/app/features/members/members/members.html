@@ -1,0 +1,242 @@
+<div class="members-page">
+
+  <div class="page-heading">
+
+    <div>
+      <h1>Member Directory</h1>
+      <p>Manage and view all registered members.</p>
+    </div>
+
+    <div class="page-actions">
+
+      <button class="filter-button">
+        ☷ Filter
+      </button>
+
+      <button class="add-button">
+        + Add Member
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>MEMBER NAME</th>
+          <th>ID</th>
+          <th>STATUS</th>
+          <th>BRANCH</th>
+          <th>LAST VISIT</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        @if (loading()) {
+
+          <tr>
+            <td colspan="6" class="message-cell">
+              Loading members...
+            </td>
+          </tr>
+
+        }
+
+        @else if (errorMessage()) {
+
+          <tr>
+            <td colspan="6" class="message-cell error">
+              {{ errorMessage() }}
+            </td>
+          </tr>
+
+        }
+
+        @else if (visibleMembers().length === 0) {
+
+          <tr>
+            <td colspan="6" class="message-cell">
+              No members found.
+            </td>
+          </tr>
+
+        }
+
+        @else {
+
+          @for (member of visibleMembers(); track member.id) {
+
+            <tr>
+
+              <td>
+
+                <div class="member-name">
+
+                  <div class="avatar">
+                    {{ member.name.charAt(0) }}
+                  </div>
+
+                  <span>
+                    {{ member.name }}
+                  </span>
+
+                </div>
+
+              </td>
+
+
+              <td>
+                {{ member.id }}
+              </td>
+
+
+              <td>
+
+                <span
+                  class="status-badge"
+                  [class.active]="member.status === 'Active'"
+                  [class.frozen]="member.status === 'Frozen'"
+                  [class.expired]="member.status === 'Expired'">
+
+                  ● {{ member.status }}
+
+                </span>
+
+              </td>
+
+
+              <td>
+                {{ member.branch }}
+              </td>
+
+
+              <td>
+                {{ member.lastVisit }}
+              </td>
+
+
+              <td class="actions-cell">
+
+                <div class="actions-wrapper">
+
+                  <button
+                    type="button"
+                    class="menu-button"
+                    (click)="toggleMenu(member.id)">
+                    ⋮
+                  </button>
+
+
+                  @if (openMenuId() === member.id) {
+
+                    <div class="action-menu">
+
+                      <button
+                        type="button"
+                        [routerLink]="['/members', member.id]">
+                        View Profile
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== 'Active'">
+                        Check-In
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== 'Active'"
+                        (click)="bookClass(member)">
+                        Book Class
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== 'Active'"
+                        [routerLink]="[
+                          '/members',
+                          member.id,
+                          'freeze'
+                        ]">
+                        Freeze Membership
+                      </button>
+
+                    </div>
+
+                  }
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          }
+
+        }
+
+      </tbody>
+
+    </table>
+
+
+    <div class="table-footer">
+
+      <span class="entries-info">
+        Showing
+        {{ showingFrom() }}
+        to
+        {{ showingTo() }}
+        of
+        {{ filteredMembers().length }}
+        entries
+      </span>
+
+
+      <div class="pagination">
+
+        <button
+          type="button"
+          (click)="changePage(currentPage() - 1)"
+          [disabled]="currentPage() === 1">
+          ‹
+        </button>
+
+
+        @for (page of pageNumbers(); track page) {
+
+          <button
+            type="button"
+            [class.current]="currentPage() === page"
+            (click)="changePage(page)">
+            {{ page }}
+          </button>
+
+        }
+
+
+        <button
+          type="button"
+          (click)="changePage(currentPage() + 1)"
+          [disabled]="currentPage() === totalPages()">
+          ›
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

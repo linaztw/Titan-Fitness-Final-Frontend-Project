@@ -1,0 +1,434 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.app-shell {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #f7f7f7;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* =========================
+   SIDEBAR - DESKTOP
+========================= */
+
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  min-height: 100vh;
+  background: #06327d;
+  color: white;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  padding: 18px 18px 10px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.logo-icon {
+  display: none;
+}
+
+.logo-name {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.logo-subtitle {
+  margin-top: 3px;
+  font-size: 10px;
+  color: #dbe4f5;
+}
+
+.check-in-button {
+  display: block;
+  width: 150px;
+  margin: 24px auto 28px;
+  padding: 11px 8px;
+  border: none;
+  background: white;
+  color: #06327d;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 22px;
+  box-sizing: border-box;
+  color: #e5ebf6;
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.menu a span {
+  width: 16px;
+  min-width: 16px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.menu a.active {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+}
+
+/* =========================
+   MAIN AREA
+========================= */
+
+.main-area {
+  flex: 1;
+  min-width: 0;
+  width: calc(100% - 240px);
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 68px;
+  padding: 0 28px;
+  background: white;
+  border-bottom: 1px solid #e7e7e7;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 210px;
+  height: 36px;
+  padding: 0 11px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  box-sizing: border-box;
+  color: #999999;
+  font-size: 11px;
+}
+
+.search span:first-child {
+  font-size: 15px;
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: #6b7280;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.header-right strong {
+  color: #123b7a;
+  font-size: 14px;
+}
+
+.content {
+  width: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   SMALL LAPTOP
+========================= */
+
+@media (max-width: 1100px) {
+  .sidebar {
+    width: 190px;
+    min-width: 190px;
+  }
+
+  .main-area {
+    width: calc(100% - 190px);
+  }
+
+  .menu a {
+    padding: 0 18px;
+  }
+
+  .header {
+    padding: 0 22px;
+  }
+
+  .content {
+    padding: 26px;
+  }
+}
+
+/* =========================
+   SMALLER LAPTOP / TABLET
+========================= */
+
+@media (max-width: 850px) {
+  .sidebar {
+    width: 72px;
+    min-width: 72px;
+  }
+
+  .main-area {
+    width: calc(100% - 72px);
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    padding: 18px 8px;
+  }
+
+  .logo-name,
+  .logo-subtitle {
+    display: none;
+  }
+
+  .logo-icon {
+    display: flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: white;
+    color: #06327d;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .check-in-button {
+    width: 46px;
+    height: 40px;
+    margin: 12px auto 20px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .check-in-button::before {
+    content: '+';
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menu a {
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    min-height: 52px;
+    padding: 0;
+    font-size: 0;
+    text-align: center;
+  }
+
+  .menu a span {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .header {
+    height: 64px;
+    padding: 0 18px;
+  }
+
+  .search {
+    width: 190px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 600px) {
+  .app-shell {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    min-height: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .logo {
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 8px;
+  }
+
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .check-in-button {
+    flex-shrink: 0;
+    width: 38px;
+    height: 34px;
+    margin: 0 8px 0 0;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  .check-in-button::before {
+    font-size: 18px;
+  }
+
+  .menu {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
+  .menu a {
+    width: 44px;
+    min-width: 44px;
+    min-height: 38px;
+    height: 38px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .menu a span {
+    width: 44px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .main-area {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header {
+    width: 100%;
+    height: 60px;
+    padding: 0 14px;
+  }
+
+  .search {
+    width: 155px;
+    max-width: 45vw;
+    height: 34px;
+    font-size: 10px;
+  }
+
+  .header-right {
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .header-right strong {
+    font-size: 12px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONE
+========================= */
+
+@media (max-width: 400px) {
+  .sidebar {
+    padding: 7px 8px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .check-in-button {
+    width: 34px;
+    margin-right: 5px;
+  }
+
+  .menu {
+    gap: 2px;
+  }
+
+  .menu a {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  .menu a span {
+    width: 40px;
+  }
+
+  .search {
+    width: 135px;
+    max-width: 42vw;
+  }
+
+  .header-right {
+    gap: 5px;
+  }
+
+  .header-right span {
+    display: none;
+  }
+
+  .content {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,254 @@
+<div class="classes-page">
+
+  <div class="page-heading">
+
+    <div>
+      <h1>Class Schedule</h1>
+      <p>Manage and monitor today's sessions.</p>
+    </div>
+
+    <div class="page-actions">
+
+      <select class="branch-select">
+        <option>All Branches</option>
+        <option>Downtown Branch</option>
+        <option>Uptown Branch</option>
+      </select>
+
+      <div class="date-control">
+
+        <button
+          type="button"
+          class="date-arrow"
+          (click)="previousDay()">
+          ‹
+        </button>
+
+        <span>{{ selectedDate() }}</span>
+
+        <button
+          type="button"
+          class="date-arrow"
+          (click)="nextDay()">
+          ›
+        </button>
+
+      </div>
+
+      <button
+        type="button"
+        class="add-class-button"
+        (click)="openAddClassDialog()">
+        + Add Class
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="schedule-layout">
+
+    <div class="sessions-card">
+
+      <div class="card-header">
+
+        <h2>Today's Sessions</h2>
+
+        <span class="count-badge">
+          {{ totalClasses() }} Classes
+        </span>
+
+      </div>
+
+
+      <div class="sessions-list">
+
+        @if (filteredClasses().length === 0) {
+
+          <div class="empty-state">
+            No classes found.
+          </div>
+
+        }
+
+        @else {
+
+          @for (item of filteredClasses(); track item.id) {
+
+            <div class="session-row">
+
+              <div class="time-block">
+
+                <strong>
+                  {{ item.time }}
+                </strong>
+
+                <span>
+                  {{ item.duration }} min
+                </span>
+
+              </div>
+
+
+              <div class="class-info">
+
+                <div class="class-name">
+
+                  @if (item.enrolled >= item.capacity * 0.9) {
+                    <span class="full-dot"></span>
+                  }
+
+                  <strong>
+                    {{ item.name }}
+                  </strong>
+
+                </div>
+
+                <div class="class-details">
+
+                  <span>
+                    👤 {{ item.trainer }}
+                  </span>
+
+                  <span>
+                    📍 {{ item.studio }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="state-column">
+
+                @if (item.state === 'In Progress') {
+
+                  <span class="state-badge in-progress">
+                    IN PROGRESS
+                  </span>
+
+                }
+
+                @else if (item.state === 'Full') {
+
+                  <span class="state-badge full">
+                    FULL
+                  </span>
+
+                }
+
+                @else if (item.state === 'Upcoming') {
+
+                  <span class="state-badge upcoming">
+                    UPCOMING
+                  </span>
+
+                }
+
+                @else if (item.state === 'Completed') {
+
+                  <span class="state-badge completed">
+                    COMPLETED
+                  </span>
+
+                }
+
+                @else if (item.state === 'Cancelled') {
+
+                  <span class="state-badge cancelled">
+                    CANCELLED
+                  </span>
+
+                }
+
+              </div>
+
+
+              <div class="enrollment-column">
+
+                <strong>
+                  {{ item.enrolled }} / {{ item.capacity }}
+                </strong>
+
+                <div class="capacity-bar">
+
+                  <div
+                    class="capacity-fill"
+                    [style.width.%]="
+                      item.capacity === 0
+                        ? 0
+                        : (item.enrolled / item.capacity) * 100
+                    ">
+                  </div>
+
+                </div>
+
+                @if (item.waitlist > 0) {
+
+                  <span class="waitlist">
+                    Waitlist: {{ item.waitlist }}
+                  </span>
+
+                }
+
+              </div>
+
+            </div>
+
+          }
+
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="capacity-card">
+
+      <div class="capacity-header">
+
+        <h2>Capacity Overview</h2>
+
+      </div>
+
+
+      <div class="capacity-stats">
+
+        <div class="capacity-stat">
+
+          <strong>
+            {{ totalEnrolled() }}
+          </strong>
+
+          <span>
+            Total Bookings
+          </span>
+
+        </div>
+
+
+        <div class="capacity-stat">
+
+          <strong>
+            {{
+              totalCapacity() === 0
+                ? 0
+                : ((totalEnrolled() / totalCapacity()) * 100).toFixed(0)
+            }}%
+          </strong>
+
+          <span>
+            Avg Fill Rate
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

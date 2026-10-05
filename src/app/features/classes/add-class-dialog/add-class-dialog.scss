@@ -1,0 +1,536 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.dialog-container {
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #172b4d;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.dialog-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 28px 18px;
+  border-bottom: 1px solid #e5e9ef;
+  box-sizing: border-box;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  min-width: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #14294d;
+}
+
+.close-button {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1b1f23;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1b1f23;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #f5f7fa;
+}
+
+/* =========================
+   BODY
+========================= */
+
+.dialog-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 28px;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #c8ced8 transparent;
+}
+
+.dialog-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.dialog-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialog-body::-webkit-scrollbar-thumb {
+  background: #c8ced8;
+  border-radius: 10px;
+}
+
+/* =========================
+   FORM ROWS
+========================= */
+
+.form-row {
+  display: grid;
+  padding: 18px 0;
+  border-bottom: 1px solid #e7ebf0;
+  box-sizing: border-box;
+}
+
+.two-columns {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.three-columns {
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+  gap: 20px;
+}
+
+.full-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* =========================
+   FORM FIELD
+========================= */
+
+.form-field {
+  min-width: 0;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d2d45;
+}
+
+.form-field label > span:first-child {
+  color: #d9363e;
+}
+
+.form-field label .optional {
+  color: #7c8798;
+  font-weight: 400;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d5dce5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1d2d45;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form-field input,
+.form-field select {
+  height: 42px;
+  padding: 0 12px;
+}
+
+.form-field textarea {
+  min-height: 78px;
+  padding: 11px 12px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #a1adbd;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #193b78;
+  box-shadow: 0 0 0 2px rgba(25, 59, 120, 0.08);
+}
+
+/* =========================
+   CAPACITY
+========================= */
+
+.capacity-input {
+  position: relative;
+  width: 100%;
+}
+
+.capacity-input input {
+  padding-right: 52px;
+}
+
+.capacity-input span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: #9aa4b3;
+  pointer-events: none;
+}
+
+/* =========================
+   DURATION
+========================= */
+
+.duration-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.duration-options button {
+  min-width: 68px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid #d5dce5;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #26364d;
+  cursor: pointer;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.duration-options button:hover {
+  border-color: #8d99aa;
+}
+
+.duration-options button.selected {
+  border-color: #183b78;
+  background: #f7f9fc;
+  box-shadow: inset 0 0 0 1px #183b78;
+}
+
+.radio-circle {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border: 1px solid #9ca6b4;
+  border-radius: 50%;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.duration-options button.selected .radio-circle {
+  border: 4px solid #183b78;
+}
+
+.duration-options small {
+  display: block;
+  margin-top: 1px;
+  font-size: 10px;
+  color: #667388;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-display {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #cde6d5;
+  border-radius: 6px;
+  background: #effaf2;
+  color: #287443;
+  font-size: 12px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #2fa45a;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.dialog-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 28px;
+  border-top: 1px solid #e5e9ef;
+  background: #f8f9fb;
+  box-sizing: border-box;
+}
+
+.cancel-button,
+.schedule-button {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.cancel-button {
+  border: 1px solid #cbd2dc;
+  background: #ffffff;
+  color: #35445a;
+}
+
+.cancel-button:hover {
+  background: #f1f3f6;
+}
+
+.schedule-button {
+  border: 1px solid #173a78;
+  background: #173a78;
+  color: #ffffff;
+}
+
+.schedule-button:hover:not(:disabled) {
+  background: #102e63;
+}
+
+.schedule-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   SMALL LAPTOP
+========================= */
+
+@media (max-width: 900px) {
+  .dialog-header {
+    padding: 18px 22px 16px;
+  }
+
+  .dialog-body {
+    padding: 0 22px;
+  }
+
+  .dialog-footer {
+    padding: 12px 22px;
+  }
+
+  .two-columns {
+    gap: 16px;
+  }
+
+  .three-columns {
+    gap: 14px;
+  }
+}
+
+/* =========================
+   TABLET / iPAD
+========================= */
+
+@media (max-width: 700px) {
+  .dialog-container {
+    max-height: 92vh;
+  }
+
+  .dialog-header {
+    padding: 16px 18px 14px;
+  }
+
+  .dialog-header h2 {
+    font-size: 20px;
+  }
+
+  .dialog-body {
+    padding: 0 18px;
+  }
+
+  .two-columns,
+  .three-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .form-row {
+    padding: 14px 0;
+  }
+
+  .form-row .form-field + .form-field {
+    margin-top: 14px;
+  }
+
+  .duration-options {
+    width: 100%;
+  }
+
+  .duration-options button {
+    flex: 1;
+  }
+
+  .dialog-footer {
+    padding: 12px 18px;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 500px) {
+  .dialog-container {
+    max-height: 94vh;
+  }
+
+  .dialog-header {
+    padding: 14px 14px 12px;
+  }
+
+  .dialog-header h2 {
+    font-size: 18px;
+  }
+
+  .close-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    font-size: 23px;
+  }
+
+  .dialog-body {
+    padding: 0 14px;
+  }
+
+  .form-row {
+    padding: 12px 0;
+  }
+
+  .form-field label {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field select {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .form-field textarea {
+    min-height: 82px;
+    font-size: 12px;
+  }
+
+  .duration-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+
+  .duration-options button {
+    min-width: 0;
+    width: 100%;
+    padding: 0 5px;
+    font-size: 11px;
+  }
+
+  .duration-options small {
+    font-size: 9px;
+  }
+
+  .status-display {
+    min-height: 40px;
+    font-size: 11px;
+  }
+
+  .dialog-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .cancel-button,
+  .schedule-button {
+    width: 100%;
+    height: 40px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONE
+========================= */
+
+@media (max-width: 380px) {
+  .dialog-header {
+    padding: 12px;
+  }
+
+  .dialog-body {
+    padding: 0 12px;
+  }
+
+  .duration-options {
+    grid-template-columns: 1fr;
+  }
+
+  .duration-options button {
+    height: 38px;
+  }
+
+  .dialog-footer {
+    grid-template-columns: 1fr;
+    padding: 9px 12px;
+  }
+}

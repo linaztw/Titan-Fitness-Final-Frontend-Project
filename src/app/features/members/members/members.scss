@@ -1,0 +1,399 @@
+:host {
+  display: block;
+}
+
+.members-page {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  color: #202020;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.page-heading p {
+  margin: 5px 0 0;
+  color: #777777;
+  font-size: 11px;
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.filter-button,
+.add-button {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #dddddd;
+  background: white;
+  color: #444444;
+  font-size: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-button {
+  border-color: #06327d;
+  background: #06327d;
+  color: white;
+  font-weight: 700;
+}
+
+.table-card {
+  width: 100%;
+  background: white;
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+thead {
+  background: #fafafa;
+}
+
+th {
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid #e5e5e5;
+  color: #777777;
+  font-size: 8px;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+td {
+  height: 51px;
+  padding: 0 12px;
+  border-bottom: 1px solid #eeeeee;
+  color: #555555;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.member-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  color: #303030;
+  font-weight: 600;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #edf0f5;
+  color: #516071;
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  background: #f7f7f7;
+  color: #777777;
+  font-size: 8px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.status-badge.active {
+  border-color: #e5cfb3;
+  background: #fbf3e9;
+  color: #8a6338;
+}
+
+.status-badge.frozen {
+  border-color: #dddddd;
+  background: #f5f5f5;
+  color: #777777;
+}
+
+.status-badge.expired {
+  border-color: #e4bfc1;
+  background: #fff4f4;
+  color: #bd4b52;
+}
+
+.actions-cell {
+  text-align: center;
+}
+
+.actions-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #777777;
+  font-size: 18px;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: #f5f5f5;
+}
+
+.action-menu {
+  position: absolute;
+  top: 26px;
+  right: 0;
+  z-index: 10;
+  width: 145px;
+  padding: 6px 0;
+  background: white;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  text-align: left;
+}
+
+.action-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 13px;
+  border: none;
+  background: white;
+  color: #444444;
+  font-size: 9px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.action-menu button:hover:not(:disabled) {
+  background: #f6f7f9;
+}
+
+.action-menu button:disabled {
+  color: #b8b8b8;
+  cursor: default;
+}
+
+.message-cell {
+  height: 120px;
+  color: #888888;
+  text-align: center;
+}
+
+.message-cell.error {
+  color: #bd4b52;
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 12px;
+  border-top: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 8px;
+}
+
+.entries-info {
+  white-space: nowrap;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.pagination button {
+  min-width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid #dddddd;
+  background: white;
+  color: #666666;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.pagination button.current {
+  border-color: #06327d;
+  background: #06327d;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 900px) {
+  .members-page {
+    max-width: 100%;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+  }
+
+  .table-card {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 760px;
+  }
+}
+
+/* =========================
+   iPad / Small Tablet
+   ========================= */
+
+@media (max-width: 768px) {
+  .page-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .page-actions {
+    width: 100%;
+  }
+
+  .filter-button,
+  .add-button {
+    flex: 1;
+  }
+
+  .table-card {
+    border-radius: 2px;
+  }
+
+  .table-footer {
+    min-width: 760px;
+  }
+}
+
+/* =========================
+   Phone
+   ========================= */
+
+@media (max-width: 600px) {
+  .page-heading {
+    margin-bottom: 16px;
+  }
+
+  .page-heading h1 {
+    font-size: 23px;
+  }
+
+  .page-heading p {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .page-actions {
+    gap: 6px;
+  }
+
+  .filter-button,
+  .add-button {
+    height: 36px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+
+  .table-card {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 760px;
+  }
+
+  th {
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  td {
+    height: 49px;
+    padding: 0 10px;
+  }
+
+  .table-footer {
+    min-width: 760px;
+    padding: 0 10px;
+  }
+}
+
+/* =========================
+   Very Small Phones
+   ========================= */
+
+@media (max-width: 400px) {
+  .page-heading h1 {
+    font-size: 21px;
+  }
+
+  .page-actions {
+    flex-direction: column;
+  }
+
+  .filter-button,
+  .add-button {
+    width: 100%;
+  }
+
+  .table-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

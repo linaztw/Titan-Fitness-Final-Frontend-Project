@@ -1,0 +1,107 @@
+<div class="booking-page">
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="goBack()">
+    ← Back to Add Class
+  </button>
+
+  <div class="booking-card">
+
+    <!-- Class Header -->
+    <div class="booking-header">
+
+      <div>
+        <h1>{{ className }}</h1>
+
+        <div class="class-meta">
+          <span>◷ {{ date || 'Today' }}, {{ startTime || '18:00' }}</span>
+          <span>♙ Trainer: {{ trainer || 'Unassigned' }}</span>
+          <span>⌖ {{ studio || 'Unassigned' }}</span>
+        </div>
+      </div>
+
+      <div class="availability-badge">
+        {{ capacity }} spots remaining
+      </div>
+
+    </div>
+
+    <!-- Select Member -->
+    <div class="booking-section">
+
+      <label>
+        Select Member
+      </label>
+
+      <input
+        type="text"
+        placeholder="Search by name or ID..."
+        [value]="memberName"
+        (input)="updateMember($any($event.target).value)"
+      >
+
+      <div class="member-card">
+
+        <div class="member-avatar">
+          {{ memberName.substring(0, 2).toUpperCase() }}
+        </div>
+
+        <div class="member-info">
+
+          <strong>
+            {{ memberName }}
+          </strong>
+
+          <span>
+            ID: {{ memberId }}
+          </span>
+
+        </div>
+
+        <span class="active-badge">
+          ● {{ memberStatus }}
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- Notes -->
+    <div class="booking-section notes-section">
+
+      <label>
+        Special Requirements / Notes
+        <span>(Optional)</span>
+      </label>
+
+      <textarea
+        rows="4"
+        placeholder="e.g., Recovering from shoulder injury">
+      </textarea>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="booking-footer">
+
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="goBack()">
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        class="confirm-button"
+        (click)="confirmBooking()">
+        Confirm Booking
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

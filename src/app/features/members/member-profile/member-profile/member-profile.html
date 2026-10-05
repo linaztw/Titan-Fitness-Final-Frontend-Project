@@ -1,0 +1,237 @@
+<div class="profile-page">
+
+  <div class="profile-header">
+
+    <div class="title-area">
+
+      <button
+        class="back-button"
+        type="button"
+        (click)="goBack()">
+        <span class="back-arrow">←</span>
+      </button>
+
+      <div>
+        <h1>Member Profile</h1>
+        <p>View member information and membership details.</p>
+      </div>
+
+    </div>
+
+    <button class="edit-button" type="button">
+      Edit Profile
+    </button>
+
+  </div>
+
+
+  <div class="profile-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
+
+      <!-- Member Information -->
+      <div class="member-card">
+
+        <div class="member-top">
+
+          <div class="avatar">
+            A
+          </div>
+
+          <div class="member-details">
+            <h2>Alex Rivera</h2>
+            <p>ID: #8492-AX</p>
+
+            <span class="status-badge">
+              ● Active
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="member-info">
+
+          <div>
+            <span>✉</span>
+            <span>rivera.fitness@email.com</span>
+          </div>
+
+          <div>
+            <span>☎</span>
+            <span>+1 (555) 019-2840</span>
+          </div>
+
+          <div>
+            <span>◉</span>
+            <span>142 West Metro Dr, Apt 48</span>
+          </div>
+
+          <div>
+            <span>▣</span>
+            <span>Joined: Oct 12, 2022</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Current Plan -->
+      <div class="plan-card">
+
+        <div class="card-title">
+
+          <h2>Current Plan</h2>
+
+          <span>ⓘ</span>
+
+        </div>
+
+
+        <div class="plan-content">
+
+          <div>
+            <h3>Annual Pro Plan</h3>
+            <p>Renews Oct 12, 2024</p>
+          </div>
+
+          <div class="plan-price">
+            <strong>$899</strong>
+            <span>/year</span>
+          </div>
+
+        </div>
+
+
+        <!-- THIS BUTTON OPENS FIGURE 4 -->
+        <button
+          class="freeze-button"
+          type="button"
+          (click)="goToFreeze()">
+          Freeze Membership
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+
+      <!-- Freeze / Guest Stats -->
+      <div class="stats-row">
+
+        <div class="stat-card">
+
+          <div class="stat-header">
+            <h3>Freezes Used</h3>
+            <span>2 / 3</span>
+          </div>
+
+          <div class="progress">
+            <div class="progress-value freeze-progress"></div>
+          </div>
+
+          <p>1 freeze remaining</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-header">
+            <h3>Guest Passes</h3>
+            <span>1 / 5</span>
+          </div>
+
+          <div class="progress">
+            <div class="progress-value guest-progress"></div>
+          </div>
+
+          <p>4 passes remaining</p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Recent Activity -->
+      <div class="activity-card">
+
+        <div class="activity-header">
+
+          <h2>Recent Activity</h2>
+
+          <button type="button">
+            View All
+          </button>
+
+        </div>
+
+
+        <div class="activity-item">
+
+          <div class="activity-icon">
+            ↪
+          </div>
+
+          <div class="activity-text">
+            <strong>Facility Check-in</strong>
+            <span>Downtown Branch</span>
+          </div>
+
+          <div class="activity-time">
+            Today<br>
+            06:45 AM
+          </div>
+
+        </div>
+
+
+        <div class="activity-item">
+
+          <div class="activity-icon">
+            ↗
+          </div>
+
+          <div class="activity-text">
+            <strong>Class Attendance</strong>
+            <span>HIIT Bootcamp with Sarah</span>
+          </div>
+
+          <div class="activity-time">
+            Oct 18, 2023<br>
+            05:30 PM
+          </div>
+
+        </div>
+
+
+        <div class="activity-item">
+
+          <div class="activity-icon">
+            ↪
+          </div>
+
+          <div class="activity-text">
+            <strong>Facility Check-in</strong>
+            <span>Downtown Branch</span>
+          </div>
+
+          <div class="activity-time">
+            Oct 16, 2023<br>
+            06:30 AM
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

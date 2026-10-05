@@ -1,0 +1,63 @@
+<div class="app-shell">
+
+  <aside class="sidebar">
+
+    <div class="logo">
+      <div class="logo-icon">T</div>
+
+      <div>
+        <div class="logo-name">Titan Fitness</div>
+        <div class="logo-subtitle">Staff Portal</div>
+      </div>
+    </div>
+
+    <button class="check-in-button">
+      + New Check-in
+    </button>
+
+    <nav class="menu">
+
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <span>▦</span>
+        Dashboard
+      </a>
+
+      <a routerLink="/members" routerLinkActive="active">
+        <span>♙</span>
+        Members
+      </a>
+
+      <a routerLink="/classes" routerLinkActive="active">
+        <span>↗</span>
+        Classes
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <div class="main-area">
+
+    <header class="header">
+
+      <div class="search">
+        <span>⌕</span>
+        <span>Search...</span>
+      </div>
+
+      <div class="header-right">
+        <strong>Downtown Branch</strong>
+        <span>♧</span>
+        <span>▢</span>
+        <span>◉</span>
+      </div>
+
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+
+</div>

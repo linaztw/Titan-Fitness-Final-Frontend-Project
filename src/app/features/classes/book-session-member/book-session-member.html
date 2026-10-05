@@ -1,0 +1,102 @@
+<div class="member-booking-page">
+
+  <div class="member-booking-card">
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <h1>Booking Confirmed</h1>
+
+    <p class="success-message">
+      Your class has been successfully booked.
+    </p>
+
+    <div class="class-summary">
+
+      <div class="summary-header">
+        <div>
+          <h2>{{ className }}</h2>
+
+          <span class="status-badge">
+            ● Confirmed
+          </span>
+        </div>
+      </div>
+
+      <div class="summary-details">
+
+        <div class="detail-item">
+          <span class="detail-icon">◷</span>
+
+          <div>
+            <small>Date & Time</small>
+
+            <strong>
+              {{ date || 'Today' }} — {{ startTime || '18:00' }}
+            </strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-icon">♙</span>
+
+          <div>
+            <small>Trainer</small>
+
+            <strong>
+              {{ trainer || 'Unassigned' }}
+            </strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-icon">⌖</span>
+
+          <div>
+            <small>Studio</small>
+
+            <strong>
+              {{ studio || 'Unassigned' }}
+            </strong>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-icon">●</span>
+
+          <div>
+            <small>Member</small>
+
+            <strong>
+              {{ memberName }}
+            </strong>
+
+            <span class="member-id">
+              ID: {{ memberId }}
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="confirmation-note">
+      <strong>You're all set!</strong>
+
+      <span>
+        Please arrive 10 minutes before the class starts.
+      </span>
+    </div>
+
+    <button
+      type="button"
+      class="done-button"
+      (click)="done()">
+      Done
+    </button>
+
+  </div>
+
+</div>

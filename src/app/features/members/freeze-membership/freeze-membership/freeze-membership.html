@@ -1,0 +1,227 @@
+<div class="freeze-page">
+
+  <a class="back-link" (click)="cancel()">
+    ← Back to Member Profile
+  </a>
+
+  <div class="page-header">
+    <div>
+      <h1>Freeze Membership</h1>
+      <p>Temporarily suspend a membership contract.</p>
+    </div>
+  </div>
+
+  <div class="freeze-grid">
+
+    <!-- Left Column -->
+    <div class="left-column">
+
+      <!-- Member Summary -->
+      <div class="card member-summary">
+
+        <h2>Member Summary</h2>
+
+        <div class="member-info">
+
+          <div class="avatar">M</div>
+
+          <div>
+            <h3>Marcus Vance</h3>
+            <p>ID: TF-89240 • Annual Premium Plan</p>
+
+            <span class="status-badge">
+              ● ACTIVE
+            </span>
+          </div>
+
+        </div>
+
+        <div class="end-date">
+          <span>Current End Date</span>
+          <strong>Oct 12, 2024</strong>
+        </div>
+
+      </div>
+
+
+      <!-- Freeze Parameters -->
+      <div class="card freeze-card">
+
+        <h2>Freeze Parameters</h2>
+
+        <!-- Start Date -->
+        <div class="form-group">
+
+          <label>
+            Start Date <span>*</span>
+          </label>
+
+          <div class="date-input">
+            <span>▣</span>
+            <input
+              type="text"
+              placeholder="mm/dd/yyyy"
+            />
+            <span>▣</span>
+          </div>
+
+        </div>
+
+
+        <!-- Duration -->
+        <div class="form-group">
+
+          <label>
+            Duration (Months) <span>*</span>
+          </label>
+
+          <div class="duration-options">
+
+            <button
+              type="button"
+              [class.selected]="duration() === '1'"
+              (click)="duration.set('1')">
+              1 Month
+            </button>
+
+            <button
+              type="button"
+              [class.selected]="duration() === '2'"
+              (click)="duration.set('2')">
+              2 Months
+            </button>
+
+            <button
+              type="button"
+              [class.selected]="duration() === '3'"
+              (click)="duration.set('3')">
+              3 Months
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Reason -->
+        <div class="form-group">
+
+          <label>
+            Reason for Freeze <span>*</span>
+          </label>
+
+          <select>
+            <option value="">Select a reason</option>
+            <option>Extended Travel</option>
+            <option>Medical</option>
+            <option>Injury</option>
+            <option>Financial</option>
+            <option>Other</option>
+          </select>
+
+        </div>
+
+
+        <!-- Notes -->
+        <div class="form-group">
+
+          <label>
+            Additional Notes
+            <span class="optional">(Optional)</span>
+          </label>
+
+          <textarea
+            placeholder="Enter any relevant details..."
+            maxlength="500">
+          </textarea>
+
+          <div class="character-count">
+            0 / 500
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column">
+
+      <div class="card impact-card">
+
+        <div class="impact-header">
+
+          <div class="chart-icon">▥</div>
+
+          <h2>Projected Impact</h2>
+
+        </div>
+
+
+        <div class="impact-row">
+
+          <span>Original End Date</span>
+
+          <strong>Oct 12, 2024</strong>
+
+        </div>
+
+
+        <div class="impact-row">
+
+          <span>Freeze Duration</span>
+
+          <strong>
+            {{ duration() === '1'
+              ? '1 Month'
+              : duration() === '2'
+              ? '2 Months'
+              : '3 Months'
+            }}
+          </strong>
+
+        </div>
+
+
+        <div class="new-end-date">
+
+          <span>New End Date</span>
+
+          <strong>Dec 12, 2024</strong>
+
+        </div>
+
+
+        <p class="billing-note">
+          * Billing will automatically pause during the freeze
+          period and resume upon reactivation.
+        </p>
+
+
+        <div class="action-buttons">
+
+          <button
+            type="button"
+            class="confirm-button"
+            (click)="confirmFreeze()">
+            Confirm Freeze
+          </button>
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="cancel()">
+            Cancel
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,333 @@
+<div class="dialog-container">
+
+  <!-- Header -->
+  <div class="dialog-header">
+
+    <h2>Add New Class</h2>
+
+    <button
+      type="button"
+      class="close-button"
+      (click)="close()"
+      aria-label="Close">
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- Body -->
+  <div class="dialog-body">
+
+    <!-- Row 1 -->
+    <div class="form-row two-columns">
+
+      <div class="form-field">
+
+        <label>
+          Class Name <span>*</span>
+        </label>
+
+        <input
+          type="text"
+          placeholder="e.g., High-Intensity Interval Training"
+          [value]="className()"
+          (input)="className.set($any($event.target).value)"
+        >
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Branch <span>*</span>
+        </label>
+
+        <select
+          [value]="branch()"
+          (change)="branch.set($any($event.target).value)">
+
+          <option value="Downtown Branch">
+            Downtown Branch
+          </option>
+
+          <option value="Uptown Branch">
+            Uptown Branch
+          </option>
+
+          <option value="All Branches">
+            All Branches
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- Row 2 -->
+    <div class="form-row two-columns">
+
+      <div class="form-field">
+
+        <label>
+          Trainer / Instructor
+        </label>
+
+        <select
+          [value]="trainer()"
+          (change)="trainer.set($any($event.target).value)">
+
+          <option value="">
+            Select an instructor
+          </option>
+
+          <option value="Sarah Jenkins">
+            Sarah Jenkins
+          </option>
+
+          <option value="Mike Johnson">
+            Mike Johnson
+          </option>
+
+          <option value="Emma Davis">
+            Emma Davis
+          </option>
+
+          <option value="Olivia Brown">
+            Olivia Brown
+          </option>
+
+          <option value="James Wilson">
+            James Wilson
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Studio / Room
+        </label>
+
+        <select
+          [value]="studio()"
+          (change)="studio.set($any($event.target).value)">
+
+          <option value="">
+            Assign a room
+          </option>
+
+          <option value="Studio A">
+            Studio A
+          </option>
+
+          <option value="Studio B">
+            Studio B
+          </option>
+
+          <option value="Studio C">
+            Studio C
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- Row 3 -->
+    <div class="form-row three-columns">
+
+      <div class="form-field">
+
+        <label>
+          Date <span>*</span>
+        </label>
+
+        <input
+          type="date"
+          [value]="date()"
+          (change)="date.set($any($event.target).value)"
+        >
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Start Time <span>*</span>
+        </label>
+
+        <input
+          type="time"
+          [value]="startTime()"
+          (change)="startTime.set($any($event.target).value)"
+        >
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Capacity Limit
+        </label>
+
+        <div class="capacity-input">
+
+          <input
+            type="number"
+            min="1"
+            placeholder="20"
+            [value]="capacity()"
+            (input)="capacity.set($any($event.target).value)"
+          >
+
+          <span>spots</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Row 4 -->
+    <div class="form-row two-columns">
+
+      <div class="form-field">
+
+        <label>
+          Duration
+        </label>
+
+        <div class="duration-options">
+
+          <button
+            type="button"
+            [class.selected]="duration() === '30'"
+            (click)="duration.set('30')">
+
+            <span class="radio-circle"></span>
+
+            <span>
+              30
+              <small>min</small>
+            </span>
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.selected]="duration() === '45'"
+            (click)="duration.set('45')">
+
+            <span class="radio-circle"></span>
+
+            <span>
+              45
+              <small>min</small>
+            </span>
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.selected]="duration() === '60'"
+            (click)="duration.set('60')">
+
+            <span class="radio-circle"></span>
+
+            <span>
+              60
+              <small>min</small>
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Status
+        </label>
+
+        <div class="status-display">
+
+          <span class="status-dot"></span>
+
+          <span>
+            Active (Booking Open)
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Row 5 -->
+    <div class="form-row full-row">
+
+      <div class="form-field">
+
+        <label>
+          Description
+          <span class="optional">(Optional)</span>
+        </label>
+
+        <textarea
+          rows="3"
+          placeholder="Add details about the class focus, required equipment, or intensity level..."
+          [value]="description()"
+          (input)="description.set($any($event.target).value)">
+        </textarea>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <div class="dialog-footer">
+
+    <button
+      type="button"
+      class="cancel-button"
+      (click)="close()">
+      Cancel
+    </button>
+
+
+    <button
+      type="button"
+      class="schedule-button"
+      [disabled]="!isValid()"
+      (click)="scheduleClass()">
+
+      <span>▣</span>
+
+      Schedule Class
+
+    </button>
+
+  </div>
+
+</div>

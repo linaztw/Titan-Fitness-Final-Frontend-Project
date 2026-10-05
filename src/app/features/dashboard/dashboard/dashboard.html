@@ -1,0 +1,128 @@
+<div class="dashboard">
+
+  <div class="page-heading">
+    <h1>Dashboard</h1>
+    <p>Live floor statistics and quick actions.</p>
+  </div>
+
+  <div class="dashboard-grid">
+
+    <div class="left-column">
+
+      <div class="kpi-row">
+
+        <div class="card kpi-card">
+          <div class="card-label">
+            <span>CHECK-INS TODAY</span>
+            <span>♧</span>
+          </div>
+
+          <div class="kpi-value">
+            {{ checkInsToday() }}
+          </div>
+
+          <div class="kpi-note">
+            {{ weeklyCheckInChange() }} vs last week
+          </div>
+        </div>
+
+        <div class="card kpi-card">
+          <div class="card-label">
+            <span>ACTIVE MEMBERS</span>
+            <span>♧</span>
+          </div>
+
+          <div class="kpi-value">
+            {{ activeMembers() | number }}
+          </div>
+
+          <div class="kpi-note">
+            Currently on floor: {{ membersOnFloor() }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card upcoming-card">
+
+        <div class="card-title-row">
+          <h2>Upcoming Classes</h2>
+          <button class="text-button">View Schedule</button>
+        </div>
+
+        <div class="classes-list">
+
+          @for (classItem of upcomingClasses(); track classItem.name) {
+            <div class="class-row">
+
+              <div class="class-time">
+                <strong>{{ classItem.time.split(' ')[0] }}</strong>
+                <span>{{ classItem.time.split(' ')[1] }}</span>
+              </div>
+
+              <div class="class-info">
+                <strong>{{ classItem.name }}</strong>
+                <span>{{ classItem.details }}</span>
+              </div>
+
+              <div class="class-enrollment">
+                <span>{{ classItem.enrolled }}</span>
+              </div>
+
+              <div class="class-status">
+                <span
+                  class="status-badge"
+                  [class.active-status]="classItem.status === 'Active'">
+                  {{ classItem.status }}
+                </span>
+              </div>
+
+            </div>
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card quick-actions-card">
+
+      <h2>Quick Actions</h2>
+
+      <div class="quick-actions">
+
+        <button class="quick-action">
+          <span class="action-icon">♙</span>
+
+          <span class="action-text">
+            <strong>New Member</strong>
+            <small>Start enrollment process</small>
+          </span>
+        </button>
+
+        <button class="quick-action">
+          <span class="action-icon">✣</span>
+
+          <span class="action-text">
+            <strong>Manual Check-in</strong>
+            <small>Verify member entry</small>
+          </span>
+        </button>
+
+        <button class="quick-action">
+          <span class="action-icon">▣</span>
+
+          <span class="action-text">
+            <strong>Register Class</strong>
+            <small>Book member into session</small>
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

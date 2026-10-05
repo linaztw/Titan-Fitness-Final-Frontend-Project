@@ -1,0 +1,518 @@
+:host {
+  display: block;
+}
+
+.freeze-page {
+  width: 100%;
+  padding: 40px;
+  background: #f7f7f7;
+  min-height: calc(100vh - 72px);
+  box-sizing: border-box;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #123d82;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: #151515;
+}
+
+.page-header p {
+  margin: 6px 0 0;
+  color: #7b8490;
+  font-size: 14px;
+}
+
+.freeze-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e0e3e7;
+  box-sizing: border-box;
+}
+
+.member-summary,
+.freeze-card,
+.impact-card {
+  padding: 24px;
+}
+
+.card h2 {
+  margin: 0 0 20px;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: #151515;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e7e9ec;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  background: #dce2ed;
+  color: #123d82;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.member-info h3 {
+  margin: 0 0 5px;
+  font-family: Georgia, serif;
+  font-size: 19px;
+}
+
+.member-info p {
+  margin: 0 0 8px;
+  color: #737b85;
+  font-size: 13px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid #b8e5c9;
+  background: #edf9f1;
+  color: #168047;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.end-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  font-size: 13px;
+}
+
+.end-date span {
+  color: #737b85;
+}
+
+.end-date strong {
+  color: #303740;
+  text-align: right;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #303740;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group label span {
+  color: #c62828;
+}
+
+.form-group label .optional {
+  color: #7a8490;
+  font-weight: 400;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  border: 1px solid #dfe3e8;
+  background: white;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.date-input span {
+  color: #7a8490;
+  font-size: 13px;
+}
+
+.date-input input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: #303740;
+}
+
+.duration-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.duration-options button {
+  padding: 11px 8px;
+  border: 1px solid #dfe3e8;
+  background: white;
+  color: #303740;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.duration-options button.selected {
+  border: 2px solid #123d82;
+  background: #eef3fb;
+  color: #123d82;
+  font-weight: 600;
+}
+
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dfe3e8;
+  background: white;
+  outline: none;
+  font-size: 13px;
+  color: #303740;
+}
+
+.form-group select {
+  height: 42px;
+  padding: 0 12px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  padding: 12px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.character-count {
+  margin-top: 5px;
+  text-align: right;
+  color: #8a929c;
+  font-size: 11px;
+}
+
+.impact-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e7e9ec;
+}
+
+.impact-header h2 {
+  margin: 0;
+}
+
+.chart-icon {
+  color: #123d82;
+  font-size: 18px;
+}
+
+.impact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e7e9ec;
+  font-size: 13px;
+}
+
+.impact-row span {
+  color: #737b85;
+}
+
+.impact-row strong {
+  color: #303740;
+  text-align: right;
+}
+
+.new-end-date {
+  margin-top: 20px;
+  padding: 18px;
+  background: #eef3fb;
+  border-left: 4px solid #123d82;
+  box-sizing: border-box;
+}
+
+.new-end-date span {
+  display: block;
+  margin-bottom: 6px;
+  color: #737b85;
+  font-size: 12px;
+}
+
+.new-end-date strong {
+  color: #123d82;
+  font-size: 20px;
+}
+
+.billing-note {
+  margin: 18px 0 0;
+  color: #7a8490;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.confirm-button,
+.cancel-button {
+  flex: 1;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.confirm-button {
+  border: 1px solid #123d82;
+  background: #123d82;
+  color: white;
+}
+
+.cancel-button {
+  border: 1px solid #dfe3e8;
+  background: white;
+  color: #123d82;
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 900px) {
+  .freeze-page {
+    padding: 28px;
+  }
+
+  .freeze-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* =========================
+   iPad / Small Tablet
+   ========================= */
+
+@media (max-width: 768px) {
+  .freeze-page {
+    padding: 22px;
+  }
+
+  .page-header h1 {
+    font-size: 29px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .member-summary,
+  .freeze-card,
+  .impact-card {
+    padding: 20px;
+  }
+}
+
+/* =========================
+   Phone
+   ========================= */
+
+@media (max-width: 600px) {
+  .freeze-page {
+    padding: 16px;
+    min-height: calc(100vh - 60px);
+  }
+
+  .back-link {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  .page-header {
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .page-header p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .freeze-grid,
+  .left-column,
+  .right-column {
+    gap: 12px;
+  }
+
+  .member-summary,
+  .freeze-card,
+  .impact-card {
+    padding: 16px;
+  }
+
+  .card h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .member-info {
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 21px;
+  }
+
+  .member-info h3 {
+    font-size: 17px;
+  }
+
+  .member-info p {
+    font-size: 11px;
+  }
+
+  .status-badge {
+    font-size: 10px;
+  }
+
+  .end-date {
+    font-size: 12px;
+  }
+
+  .duration-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .duration-options button {
+    padding: 10px 5px;
+    font-size: 11px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .impact-row {
+    padding: 15px 0;
+    font-size: 12px;
+  }
+
+  .new-end-date {
+    padding: 15px;
+  }
+
+  .new-end-date strong {
+    font-size: 18px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .confirm-button,
+  .cancel-button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Very Small Phones
+   ========================= */
+
+@media (max-width: 400px) {
+  .freeze-page {
+    padding: 12px;
+  }
+
+  .page-header h1 {
+    font-size: 23px;
+  }
+
+  .member-summary,
+  .freeze-card,
+  .impact-card {
+    padding: 14px;
+  }
+
+  .member-info {
+    align-items: flex-start;
+  }
+
+  .end-date {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .end-date strong {
+    text-align: left;
+  }
+
+  .duration-options {
+    grid-template-columns: 1fr;
+  }
+
+  .duration-options button {
+    width: 100%;
+  }
+}
