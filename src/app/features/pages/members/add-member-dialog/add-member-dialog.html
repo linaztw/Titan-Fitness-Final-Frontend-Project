@@ -1,0 +1,32 @@
+<section class="p-4">
+  <header class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0">{{ isEditing() ? 'Edit Member' : 'Add Member' }}</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+  </header>
+
+  <div class="mb-3">
+    <label class="form-label" for="member-name">Member name <span class="text-danger">*</span></label>
+    <input id="member-name" class="form-control" type="text" autocomplete="name" appAutofocus
+      [value]="name()" (input)="name.set($any($event.target).value)"
+      [attr.aria-invalid]="attemptedSubmit() && name().trim().length < 2" />
+    @if (attemptedSubmit() && name().trim().length < 2) {
+      <div class="text-danger small mt-1">Enter a name with at least 2 characters.</div>
+    }
+  </div>
+
+  <div class="mb-4">
+    <label class="form-label" for="member-branch">Branch <span class="text-danger">*</span></label>
+    <select id="member-branch" class="form-select" [value]="branch()"
+      (change)="branch.set($any($event.target).value)">
+      <option value="Downtown">Downtown</option>
+      <option value="Uptown">Uptown</option>
+    </select>
+  </div>
+
+  <footer class="d-flex justify-content-end gap-2">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="save()">
+      {{ isEditing() ? 'Save Changes' : 'Add Member' }}
+    </button>
+  </footer>
+</section>

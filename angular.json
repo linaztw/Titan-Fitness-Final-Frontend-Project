@@ -30,7 +30,11 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/app/shared/styles/font-awesome.css",
+              "src/styles.scss",
+              "src/app/shared/styles/page-components.css",
+              "src/app/shared/styles/catalogue-details.css"
             ]
           },
           "configurations": {

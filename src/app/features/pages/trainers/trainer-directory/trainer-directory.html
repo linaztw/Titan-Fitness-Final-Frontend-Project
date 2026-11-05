@@ -1,0 +1,26 @@
+<section class="app-page directory-page">
+  <div class="directory-heading">
+    <div><h1 class="app-page-title">Trainer Directory</h1><p class="app-page-subtitle">Manage and view all trainers.</p></div>
+    <a class="btn btn-primary" routerLink="/trainers/new"><i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Add Trainer</a>
+  </div>
+  <div class="directory-tools app-panel">
+    <label class="search-control"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input class="form-control" type="search" placeholder="Search trainers..." aria-label="Search trainers" [value]="search()" (input)="setSearch($any($event.target).value)"></label>
+    <label class="branch-control"><span>Branch</span><select class="form-select" aria-label="Filter trainers by branch" [value]="branch()" (change)="setBranch($any($event.target).value)"><option>All branches</option><option>Downtown</option><option>Uptown</option></select></label>
+  </div>
+  <div class="table-responsive app-panel directory-table-wrap">
+    <table class="table align-middle mb-0 directory-table">
+      <thead><tr><th>Trainer name</th><th>ID</th><th>Specialty</th><th>Branch</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
+      <tbody>
+        @for (trainer of pageItems(); track trainer.id) {
+          <tr>
+            <td><span class="person-cell"><span class="person-avatar">{{ trainer.name.charAt(0) }}{{ trainer.name.split(' ')[1]?.charAt(0) }}</span><strong>{{ trainer.name }}</strong></span></td>
+            <td class="muted-cell">#{{ trainer.id }}</td><td>{{ trainer.specialty }}</td><td>{{ trainer.branch }}</td>
+            <td><span class="status-pill" [class.status-inactive]="!trainer.isActive"><span></span>{{ trainer.isActive ? 'Active' : 'Inactive' }}</span></td>
+            <td><div class="row-actions"><a class="btn btn-sm btn-outline-secondary" [routerLink]="['/trainers', trainer.id]">View</a><a class="btn btn-sm btn-outline-primary" [routerLink]="['/trainers', trainer.id, 'edit']">Update</a></div></td>
+          </tr>
+        } @empty { <tr><td colspan="6" class="empty-state">No trainers match your search.</td></tr> }
+      </tbody>
+    </table>
+    <div class="directory-footer"><span>Showing {{ filtered().length ? (page() - 1) * pageSize + 1 : 0 }} to {{ displayEnd() }} of {{ filtered().length }} entries</span><div class="pagination-controls"><button class="btn btn-sm btn-outline-secondary" (click)="changePage(-1)" [disabled]="page() === 1" aria-label="Previous page">‹</button><span>{{ page() }} / {{ pageCount() }}</span><button class="btn btn-sm btn-outline-secondary" (click)="changePage(1)" [disabled]="page() === pageCount()" aria-label="Next page">›</button></div></div>
+  </div>
+</section>

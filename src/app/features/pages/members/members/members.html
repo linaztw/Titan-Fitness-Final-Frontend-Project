@@ -1,0 +1,218 @@
+<div class="members-page container-fluid">
+
+  <app-page-header title="Member Directory" subtitle="Manage and view all registered members."
+    actionLabel="Add Member" actionIcon="fa-solid fa-user-plus" (action)="addMember()" />
+
+  <div class="d-flex flex-wrap gap-2 mb-3">
+
+      <input class="form-control" type="search" placeholder="Search name or ID"
+        aria-label="Search members" [value]="searchTerm()"
+        (input)="setSearchTerm($any($event.target).value)" />
+
+      <select class="form-select" aria-label="Filter by membership status"
+        [value]="selectedStatus()" (change)="setStatus($any($event.target).value)">
+        <option value="All">All statuses</option>
+        <option [value]="MemberStatus.Active">Active</option>
+        <option [value]="MemberStatus.Frozen">Frozen</option>
+        <option [value]="MemberStatus.Expired">Expired</option>
+      </select>
+
+      <select class="form-select" aria-label="Filter by branch"
+        [value]="selectedBranch()" (change)="setBranch($any($event.target).value)">
+        <option value="All">All branches</option>
+        <option value="Downtown">Downtown</option>
+        <option value="Uptown">Uptown</option>
+      </select>
+
+  </div>
+
+  @if (actionMessage()) {
+    <p class="alert alert-success py-2" role="status">{{ actionMessage() }}</p>
+  }
+
+
+  <div class="table-card">
+
+    <div class="table-responsive">
+    <table class="table align-middle mb-0">
+
+      <thead>
+        <tr>
+          <th>MEMBER NAME</th>
+          <th>ID</th>
+          <th>STATUS</th>
+          <th>BRANCH</th>
+          <th>LAST VISIT</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        @if (loading()) {
+
+          <tr>
+            <td colspan="6" class="message-cell">
+              Loading members...
+            </td>
+          </tr>
+
+        }
+
+        @else if (errorMessage()) {
+
+          <tr>
+            <td colspan="6" class="message-cell error">
+              {{ errorMessage() }}
+            </td>
+          </tr>
+
+        }
+
+        @else if (visibleMembers().length === 0) {
+
+          <tr>
+            <td colspan="6" class="message-cell">
+              No members found.
+            </td>
+          </tr>
+
+        }
+
+        @else {
+
+          @for (member of visibleMembers(); track member.id) {
+
+            <tr>
+
+              <td>
+
+                <div class="member-name">
+
+                  <div class="avatar">
+                    {{ member.name.charAt(0) }}
+                  </div>
+
+                  <span>
+                    {{ member.name }}
+                  </span>
+
+                </div>
+
+              </td>
+
+
+              <td>
+                {{ member.id }}
+              </td>
+
+
+              <td>
+
+                <app-status-badge [status]="member.status" />
+
+              </td>
+
+
+              <td>
+                {{ member.branch }}
+              </td>
+
+
+              <td>
+                {{ member.lastVisit }}
+              </td>
+
+
+              <td class="actions-cell">
+
+                <div class="actions-wrapper" appClickOutside (appClickOutside)="closeActionMenu()">
+
+                  <button
+                    type="button"
+                    class="menu-button"
+                    (click)="toggleMenu(member.id)">
+                    ⋮
+                  </button>
+
+
+                  @if (openMenuId() === member.id) {
+
+                    <div class="action-menu">
+
+                      <button
+                        type="button"
+                        [routerLink]="['/members', member.id.replace('#', '')]">
+                        View Profile
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== MemberStatus.Active"
+                        (click)="checkIn(member)">
+                        Check-In
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== MemberStatus.Active"
+                        (click)="bookClass(member)">
+                        Book Class
+                      </button>
+
+
+                      <button
+                        type="button"
+                        [disabled]="member.status !== MemberStatus.Active"
+                        [routerLink]="[
+                          '/members',
+                          member.id.replace('#', ''),
+                          'freeze'
+                        ]">
+                        Freeze Membership
+                      </button>
+
+                    </div>
+
+                  }
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          }
+
+        }
+
+      </tbody>
+
+    </table>
+    </div>
+
+
+    <div class="table-footer">
+
+      <span class="entries-info">
+        Showing
+        {{ showingFrom() }}
+        to
+        {{ showingTo() }}
+        of
+        {{ filteredMembers().length }}
+        entries
+      </span>
+
+
+      <app-paginator [page]="currentPage()" [totalPages]="totalPages()"
+        [pages]="pageNumbers()" (pageChange)="changePage($event)" />
+
+    </div>
+
+  </div>
+
+</div>

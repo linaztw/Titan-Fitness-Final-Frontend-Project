@@ -1,0 +1,20 @@
+<section class="app-page detail-page">
+  @if (missing()) { <div class="alert alert-warning">Trainer was not found. <a routerLink="/trainers">Back to trainers</a></div> }
+  @else {
+    <a class="back-link" routerLink="/trainers"><i class="fa-solid fa-arrow-left me-2" aria-hidden="true"></i>Back to list</a>
+    <div class="detail-heading"><div><h1 class="app-page-title">{{ mode === 'add' ? 'New Trainer' : trainer()?.name }}</h1><p class="app-page-subtitle">{{ mode === 'add' ? 'Add a trainer to the roster.' : 'Trainer #' + trainer()?.id }}</p></div><span class="mode-pill">{{ mode === 'view' ? 'View mode' : mode === 'add' ? 'Add mode' : 'Update mode' }}</span>
+      @if (mode === 'view' && trainer()) { <a class="btn btn-primary ms-auto" [routerLink]="['/trainers', trainer()!.id, 'edit']"><i class="fa-solid fa-pen me-2" aria-hidden="true"></i>Edit Trainer</a> }
+    </div>
+    <form #trainerForm="ngForm" (ngSubmit)="save()" novalidate>
+      <section class="detail-card app-panel"><div class="detail-card-title">Trainer Details</div><div class="detail-grid">
+        <label class="field"><span>Trainer name @if (mode !== 'view') { <b>*</b> }</span><input class="form-control" name="name" required minlength="2" [readonly]="mode === 'view'" [class.readonly-field]="mode === 'view'" [ngModel]="name()" (ngModelChange)="name.set($event)" placeholder="e.g., Sarah Jenkins">@if (attempted() && name().trim().length < 2) { <small class="app-form-error">Enter at least 2 characters.</small> }</label>
+        <label class="field"><span>Specialty</span><input class="form-control" name="specialty" [readonly]="mode === 'view'" [class.readonly-field]="mode === 'view'" [ngModel]="specialty()" (ngModelChange)="specialty.set($event)" placeholder="e.g., HIIT / Strength"></label>
+        <label class="field"><span>Branch @if (mode !== 'view') { <b>*</b> }</span><select class="form-select" name="branch" required [disabled]="mode === 'view'" [ngModel]="branch()" (ngModelChange)="branch.set($event)"><option value="">Select a branch</option><option>Downtown</option><option>Uptown</option></select>@if (attempted() && !branch()) { <small class="app-form-error">Choose a branch.</small> }</label>
+        <label class="field"><span>Email @if (mode !== 'view') { <b>*</b> }</span><input class="form-control" name="email" type="email" required [readonly]="mode === 'view'" [class.readonly-field]="mode === 'view'" [ngModel]="email()" (ngModelChange)="email.set($event)" placeholder="name@titanfitness.com">@if (attempted() && !emailIsValid()) { <small class="app-form-error">Enter a valid email address.</small> }</label>
+        <label class="field"><span>Phone</span><input class="form-control" name="phone" type="tel" [readonly]="mode === 'view'" [class.readonly-field]="mode === 'view'" [ngModel]="phone()" (ngModelChange)="phone.set($event)" placeholder="+1 (555) 000-0000"></label>
+        <div class="field status-field"><span>Status</span><label class="form-check"><input class="form-check-input" name="isActive" type="checkbox" [disabled]="mode === 'view'" [ngModel]="isActive()" (ngModelChange)="isActive.set($event)"><span class="form-check-label">IsActive</span></label><small class="text-secondary">Ticked means true, unticked means false.</small></div>
+      </div></section>
+      @if (mode !== 'view') { <div class="detail-actions"><a class="btn btn-outline-secondary" routerLink="/trainers">Cancel</a><button class="btn btn-primary" type="submit"><i class="fa-solid fa-check me-2" aria-hidden="true"></i>{{ mode === 'add' ? 'Save Trainer' : 'Save Changes' }}</button></div> }
+    </form>
+  }
+</section>

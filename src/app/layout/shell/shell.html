@@ -11,25 +11,35 @@
       </div>
     </div>
 
-    <button class="check-in-button">
-      + New Check-in
+    <button class="check-in-button btn btn-primary" type="button" routerLink="/members">
+      <i class="fa-solid fa-right-to-bracket me-2" aria-hidden="true"></i>New Check-in
     </button>
 
     <nav class="menu">
 
       <a routerLink="/dashboard" routerLinkActive="active">
-        <span>▦</span>
+        <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
         Dashboard
       </a>
 
       <a routerLink="/members" routerLinkActive="active">
-        <span>♙</span>
+        <i class="fa-solid fa-users" aria-hidden="true"></i>
         Members
       </a>
 
       <a routerLink="/classes" routerLinkActive="active">
-        <span>↗</span>
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
         Classes
+      </a>
+
+      <a routerLink="/trainers" routerLinkActive="active">
+        <i class="fa-solid fa-dumbbell" aria-hidden="true"></i>
+        Trainers
+      </a>
+
+      <a routerLink="/plans" routerLinkActive="active">
+        <i class="fa-solid fa-tags" aria-hidden="true"></i>
+        Plans
       </a>
 
     </nav>
@@ -41,21 +51,21 @@
     <header class="header">
 
       <div class="search">
-        <span>⌕</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         <span>Search...</span>
       </div>
 
       <div class="header-right">
         <strong>Downtown Branch</strong>
-        <span>♧</span>
-        <span>▢</span>
-        <span>◉</span>
+        <i class="fa-regular fa-bell" aria-label="Notifications"></i>
+        <i class="fa-solid fa-gear" aria-label="Settings"></i>
+        <i class="fa-regular fa-circle-user" aria-label="User profile"></i>
       </div>
 
     </header>
 
     <main class="content">
-      <router-outlet></router-outlet>
+      <ng-content></ng-content>
     </main>
 
   </div>

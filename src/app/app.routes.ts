@@ -1,65 +1,51 @@
 import { Routes } from '@angular/router';
-import { ShellComponent } from './layout/shell/shell';
 
 export const routes: Routes = [
   {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./features/pages/dashboard/dashboard/dashboard.routes').then(
+        module => module.DASHBOARD_ROUTES
+      )
+  },
+  {
+    path: 'members',
+    loadChildren: () =>
+      import('./features/pages/members/members.routes').then(
+        module => module.MEMBERS_ROUTES
+      )
+  },
+  {
+    path: 'classes',
+    loadChildren: () =>
+      import('./features/pages/classes/classes.routes').then(
+        module => module.CLASSES_ROUTES
+      )
+  },
+  {
+    path: 'trainers',
+    loadChildren: () =>
+      import('./features/pages/trainers/trainers.routes').then(
+        module => module.TRAINERS_ROUTES
+      )
+  },
+  {
+    path: 'plans',
+    loadChildren: () =>
+      import('./features/pages/plans/plans.routes').then(
+        module => module.PLANS_ROUTES
+      )
+  },
+  {
     path: '',
-    component: ShellComponent,
-    children: [
-
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./features/dashboard/dashboard/dashboard.routes').then(
-            m => m.DASHBOARD_ROUTES
-          )
-      },
-
-      {
-        path: 'members',
-        loadChildren: () =>
-          import('./features/members/members.routes').then(
-            m => m.MEMBERS_ROUTES
-          )
-      },
-
-      {
-        path: 'classes',
-        children: [
-
-          {
-            path: '',
-            loadComponent: () =>
-              import('./features/classes/classes/classes').then(
-                m => m.ClassesComponent
-              )
-          },
-
-          {
-            path: 'book-session',
-            loadComponent: () =>
-              import('./features/classes/book-session/book-session').then(
-                m => m.BookSession
-              )
-          },
-
-          {
-            path: 'book-session-member',
-            loadComponent: () =>
-              import('./features/classes/book-session-member/book-session-member').then(
-                m => m.BookSessionMember
-              )
-          }
-
-        ]
-      },
-
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      }
-
-    ]
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./features/pages/not-found/not-found').then(
+        module => module.NotFoundComponent
+      )
   }
 ];

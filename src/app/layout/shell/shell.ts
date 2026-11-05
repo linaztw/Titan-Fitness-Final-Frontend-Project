@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import {
   RouterLink,
-  RouterLinkActive,
-  RouterOutlet
+  RouterLinkActive
 } from '@angular/router';
 
 @Component({
   selector: 'app-shell',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './shell.html',
-  styleUrl: './shell.scss'
 })
 export class ShellComponent {
 }
